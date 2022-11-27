@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Truly Infinite</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="https://anti-ghost.github.io/images/ghost.jpg" />
+    <script 
+      src="https://cdn.jsdelivr.net/npm/vue/dist/vue.global.js"
+      defer
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      defer
+    ></script>
+    <script src="notify.js" defer></script>
+    <script src="decimal.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="app" style="display: none;">
+      <p>You have {{format(game.energy)}} energy (+{{format(getEnergyGain())}}/s)</p>
+      <h1>You have {{format(game.points)}} points</h1>
+      <p>(+{{format(getPointGain())}}/s)</p>
+      <div v-if="tab == 0">
+        
+      </div>
+      <div v-if="tab == 1">
+        <table>
+          <tbody>
+            <tr>
+              <td><button @click="save(true)" class="optionsButton">Save your game</button></td>
+              <td><button @click="importSave()" class="optionsButton">Import your save</button></td>
+            </tr>
+            <tr>
+              <td><button @click="exportSave()" class="optionsButton">Export your save</button></td>
+              <td><button @click="hardReset()" class="optionsButton">Reset your game</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <p>
+          <a href="howtoplay.html">How to play</a> |
+          <a href="changelog.html">Changelog</a>
+        </p> -->
+        <p>
+          Current Version: v1.0
+        </p>
+      </div>
+      <div v-if="tab == 2">
+        <p>You have played for {{formatTime(game.timePlayed)}}.</p>
+        <p>Your highest point number was {{format(game.bestPoints)}}.</p>
+        <p>You have made a total of {{format(game.totalPoints)}} points.</p>
+      </div>
+    </div>
+  </body>
+</html>
