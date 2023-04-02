@@ -4,37 +4,81 @@
     <meta charset="utf-8" />
     <title>Truly Infinite</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="tt.css"
+    />
     <link rel="icon" href="https://anti-ghost.github.io/images/ghost.jpg" />
-    <script 
+    <script
       src="https://cdn.jsdelivr.net/npm/vue/dist/vue.global.js"
       defer
     ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.6.1.js"
-      defer
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" defer></script>
     <script src="notify.js" defer></script>
     <script src="decimal.js" defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div id="app" style="display: none;">
-      <p>You have {{format(game.energy)}} energy (+{{format(getEnergyGain())}}/s)</p>
-      <h1>You have {{format(game.points)}} points</h1>
-      <p>(+{{format(getPointGain())}}/s)</p>
-      <div v-if="tab == 0">
-        
+    <div id="app" style="display: none">
+      <p>
+        You have
+        <span style="font-size: 2.5em">{{format(game.points)}}</span> points.
+      </p>
+      <p>You are getting {{format(getPointGain())}} points per second.</p>
+      <p>
+        <button @click="tabs.tab = 0" class="tabButton">Letters</button
+        ><button @click="tabs.tab = 1" class="tabButton">Options</button
+        ><button @click="tabs.tab = 2" class="tabButton">Statistics</button>
+      </p>
+      <div v-if="tabs.tab == 0">
+        <table style="width: 100%">
+          <tbody>
+            <tr v-for="x in 26" style="font-size: 16px">
+              <td style="text-align: left; width: 32%">
+                {{LETTERS[x - 1]}} x{{format(getLetterBase().pow(game.letters[x
+                - 1]))}}
+              </td>
+              <td style="text-align: left; width: 48%">
+                {{format(game.letters[x - 1])}}
+              </td>
+              <td style="text-align: left; width: 20%">
+                <button
+                  style="width: 100%; height: 38px; font-size: 12px"
+                  :class="canBuyLetter(x) ? '': 'locked'"
+                >
+                  Cost: {{format(getLetterCost(x))}}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div v-if="tab == 1">
+      <div v-if="tabs.tab == 1">
         <table>
           <tbody>
             <tr>
-              <td><button @click="save(true)" class="optionsButton">Save your game</button></td>
-              <td><button @click="importSave()" class="optionsButton">Import your save</button></td>
+              <td>
+                <button @click="save(true)" class="optionsButton">
+                  Save your game
+                </button>
+              </td>
+              <td>
+                <button @click="importSave()" class="optionsButton">
+                  Import your save
+                </button>
+              </td>
             </tr>
             <tr>
-              <td><button @click="exportSave()" class="optionsButton">Export your save</button></td>
-              <td><button @click="hardReset()" class="optionsButton">Reset your game</button></td>
+              <td>
+                <button @click="exportSave()" class="optionsButton">
+                  Export your save
+                </button>
+              </td>
+              <td>
+                <button @click="hardReset()" class="optionsButton">
+                  Reset your game
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -42,11 +86,9 @@
           <a href="howtoplay.html">How to play</a> |
           <a href="changelog.html">Changelog</a>
         </p> -->
-        <p>
-          Current Version: v1.0
-        </p>
+        <p>Current Version: v0.1</p>
       </div>
-      <div v-if="tab == 2">
+      <div v-if="tabs.tab == 2">
         <p>You have played for {{formatTime(game.timePlayed)}}.</p>
         <p>Your highest point number was {{format(game.bestPoints)}}.</p>
         <p>You have made a total of {{format(game.totalPoints)}} points.</p>
