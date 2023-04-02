@@ -1,0 +1,126 @@
+* {
+  margin-right: auto;
+  margin-left: auto;
+  color: #e0e0e0;
+  font-family: Typewriter, monospace;
+}
+
+body {
+  background: #1f1f1f;
+  margin: 9px 31px;
+  text-align: center;
+  font-size: 11px;
+}
+
+button {
+  background: #455a64;
+  font-weight: bold;
+  height: 25px;
+  border-color: #127a20;
+  border-style: solid;
+  border-radius: 4px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+button:hover {
+  color: black;
+  background: #1b5e20;
+}
+
+.tabButton {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 4px;
+  border: 2px;
+  border-color: #1256a3;
+  border-radius: 4px;
+  margin: 2px;
+}
+
+.tabButton:hover {
+  background: #1256a3;
+}
+
+.subTabButton {
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0 4px;
+  border: 2px;
+  border-color: #1256a3;
+  border-radius: 4px;
+  margin: 5px 8px;
+}
+
+.subTabButton:hover {
+  background: #1256a3;
+}
+
+.optionsButton {
+  width: 220px;
+  height: 55px;
+  font-size: 13px;
+  margin: 5px 8px;
+}
+
+.upgradeButton {
+  width: 200px;
+  height: 100px;
+  border-radius: 4px;
+}
+
+.locked {
+  background: #37474f !important;
+  border-color: #b84b5f !important;
+  cursor: default;
+}
+
+.locked:hover {
+  background: #b84b5f !important;
+}
+
+.bought {
+  color: black !important;
+  background: lime !important;
+  border-color: black !important;
+  cursor: default;
+}
+
+.prestigeButton {
+  font-size: 16px;
+  padding: 4px 8px;
+}
+
+.challenge {
+  width: 300px;
+  height: 150px;
+  border-radius: 8px;
+}
+
+.running {
+  color: black !important;
+  background: white !important;
+  border-color: black !important;
+}
+
+.cursorDefault {
+  cursor: default !important;
+}
+
+.cursorPointer {
+  cursor: pointer !important;
+}
+
+.cursorNotAllowed {
+  cursor: not-allowed !important;
+}
+
+.exponentButton {
+  background: #E0E0E0;
+  border-color: #4980CC;
+}
+
+.exponentButton:hover {
+  color: white;
+  background: #4980CC;
+}
